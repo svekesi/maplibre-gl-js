@@ -10,6 +10,9 @@ import {createVerticalPerspectiveTransform} from './vertical_perspective_transfo
 import {VerticalPerspectiveProjection} from './vertical_perspective_projection.ts';
 import {CRSWorldCoordinateHelper} from './crs.ts';
 import {getRegisteredProjection} from './projection_crud.ts';
+import {AzimuthalEquidistantProjection, isAzimuthalEquidistantSpecification} from './azimuthal_equidistant_projection.ts';
+import {createAzimuthalEquidistantTransform} from './azimuthal_equidistant_transform.ts';
+import {AzimuthalEquidistantCameraHelper} from './azimuthal_equidistant_camera_helper.ts';
 
 import type {ProjectionSpecification} from '@maplibre/maplibre-gl-style-spec';
 import type {Projection} from './projection.ts';
@@ -22,6 +25,15 @@ export function createProjectionFromName(name: ProjectionSpecification['type'], 
     cameraHelper: ICameraHelper;
 } {
     const transformOptions = {constrainOverride: transformConstrain};
+    if (isAzimuthalEquidistantSpecification(name)) {
+        // Either the plain projection, or an expression that transitions between it and mercator.
+        const azimuthalProjection = new AzimuthalEquidistantProjection({type: name}, globalState);
+        return {
+            projection: azimuthalProjection,
+            transform: createAzimuthalEquidistantTransform(transformOptions),
+            cameraHelper: new AzimuthalEquidistantCameraHelper(azimuthalProjection),
+        };
+    }
     if (Array.isArray(name)) {
         const registeredName = findRegisteredProjectionName(name);
         if (registeredName) {

@@ -1,5 +1,6 @@
-float projectLineThickness(float tileY) {
-    return 1.0;
+// Scale of the line extrusion in tile units, separately for tile X and Y (the projection may not be conformal).
+vec2 projectLineThickness(float tileY) {
+    return vec2(1.0);
 }
 
 float projectCircleRadius(float tileY) {

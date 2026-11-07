@@ -1,5 +1,6 @@
 ## main
 ### ✨ Features and improvements
+- Add the `azimuthal-equidistant` projection, centered on the north pole like the map in the emblem of the United Nations, cut off at 60° south. It can transition to mercator with a projection expression, e.g. `["interpolate", ["linear"], ["zoom"], 5, "azimuthal-equidistant", 6, "mercator"]`. Line widths are now corrected per axis in non-conformal projections (`projectLineThickness` returns a `vec2`).
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes

@@ -88,7 +88,7 @@ void main() {
     // for a plain vertex, the miter vector of the join for every vertex of a join.
     mediump vec2 offset2 = offset * a_offset_normal * scale * normal.y;
 
-    float adjustedThickness = projectLineThickness(pos.y);
+    vec2 adjustedThickness = projectLineThickness(pos.y);
     vec4 projected_no_extrude = projectTile(pos + offset2 / u_ratio * adjustedThickness + u_translation);
     vec4 projected_with_extrude = projectTile(pos + offset2 / u_ratio * adjustedThickness + u_translation + dist / u_ratio * adjustedThickness);
     gl_Position = projected_with_extrude;

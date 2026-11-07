@@ -1,0 +1,46 @@
+{
+  "version": 8,
+  "metadata": {
+    "test": {
+      "description": "Raster tiles bend around the pole, the polar cap is filled, prime meridian points down.",
+      "height": 512,
+      "width": 512
+    }
+  },
+  "center": [
+    0,
+    90
+  ],
+  "zoom": 0,
+  "projection": {
+    "type": "azimuthal-equidistant"
+  },
+  "sources": {
+    "source": {
+      "type": "raster",
+      "tiles": [
+        "local://tiles/{z}-{x}-{y}.satellite.png"
+      ],
+      "minzoom": 1,
+      "maxzoom": 1,
+      "tileSize": 256
+    }
+  },
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {
+        "background-color": "white"
+      }
+    },
+    {
+      "id": "raster",
+      "type": "raster",
+      "source": "source",
+      "paint": {
+        "raster-fade-duration": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "version": 8,
+  "metadata": {
+    "test": {
+      "description": "Hillshade at mid zoom: north (towards the pole) is up at the map center.",
+      "height": 256,
+      "width": 256,
+      "allowed": 0.05
+    }
+  },
+  "center": [
+    -118.12,
+    36.6
+  ],
+  "zoom": 4.5,
+  "projection": {
+    "type": "azimuthal-equidistant"
+  },
+  "sources": {
+    "hillshadeSource": {
+      "type": "raster-dem",
+      "tiles": [
+        "local://tiles/terrain/{z}-{x}-{y}.terrain.png"
+      ]
+    }
+  },
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {
+        "background-color": "white"
+      }
+    },
+    {
+      "id": "hills",
+      "type": "hillshade",
+      "source": "hillshadeSource",
+      "layout": {
+        "visibility": "visible"
+      }
+    }
+  ]
+}

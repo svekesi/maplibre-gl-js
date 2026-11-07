@@ -1,0 +1,185 @@
+{
+  "version": 8,
+  "metadata": {
+    "test": {
+      "description": "Labels stay upright; the label south of the outer ring is hidden.",
+      "height": 256,
+      "width": 256
+    }
+  },
+  "center": [
+    0,
+    90
+  ],
+  "zoom": -0.9,
+  "glyphs": "local://glyphs/{fontstack}/{range}.pbf",
+  "projection": {
+    "type": "azimuthal-equidistant"
+  },
+  "sources": {
+    "geojson": {
+      "type": "geojson",
+      "data": {
+        "type": "FeatureCollection",
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "name": "0/80"
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                0,
+                80
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "name": "0/50"
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                0,
+                50
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "name": "0/20"
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                0,
+                20
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "name": "0/-10"
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                0,
+                -10
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "name": "0/-40"
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                0,
+                -40
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "name": "90/50"
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                90,
+                50
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "name": "180/50"
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                180,
+                50
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "name": "-90/50"
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                -90,
+                50
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "name": "0/-70"
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                0,
+                -70
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {
+        "background-color": "white"
+      }
+    },
+    {
+      "id": "dots",
+      "type": "circle",
+      "source": "geojson",
+      "paint": {
+        "circle-radius": 3,
+        "circle-color": "#d00000"
+      }
+    },
+    {
+      "id": "text",
+      "type": "symbol",
+      "source": "geojson",
+      "layout": {
+        "text-field": [
+          "get",
+          "name"
+        ],
+        "text-font": [
+          "Open Sans Semibold",
+          "Arial Unicode MS Bold"
+        ],
+        "text-size": 10,
+        "text-offset": [
+          0,
+          1
+        ],
+        "text-allow-overlap": true
+      }
+    }
+  ]
+}

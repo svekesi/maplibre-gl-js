@@ -41,12 +41,13 @@ float circumferenceRatioAtTileY(float tileY) {
     return (2.0 * t) / (t * t + 1.0);
 }
 
-float projectLineThickness(float tileY) {
+// Scale of the line extrusion in tile units, separately for tile X and Y (the same for both on the globe).
+vec2 projectLineThickness(float tileY) {
     float thickness = 1.0 / circumferenceRatioAtTileY(tileY);
     if (u_projection_transition < 0.999) {
-        return mix(1.0, thickness, u_projection_transition);
+        return vec2(mix(1.0, thickness, u_projection_transition));
     } else {
-        return thickness;
+        return vec2(thickness);
     }
 }
 

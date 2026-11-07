@@ -364,7 +364,8 @@ export class Painter {
         }
 
         // Render atmosphere, only for Globe projection
-        if (data.isRenderingGlobe) {
+        // The atmosphere belongs to the planet: the azimuthal projection is a flat disk without one.
+        if (data.isRenderingGlobe && style.projection?.name !== 'azimuthal-equidistant') {
             this.drawFunctions.atmosphere(this.skyMesh, frameRenderContext);
         }
 
